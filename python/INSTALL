@@ -1,0 +1,33 @@
+# Install Python Configuration
+
+PY_VERSION="3.5.1"
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+if [ "$(uname)" == "Darwin" ]; then
+    OS="mac"
+    BASHRC="$HOME/.bash_profile"
+else
+    OS="linux"
+    BASHRC="$HOME/.bashrc"
+fi
+
+# Install Python Config
+bootstrap="source $SRC_DIR/_bootstrap"
+already_installed=$(grep -c "$bootstrap" "$BASHRC")
+
+if [ $already_installed -eq 0 ]; then
+    echo "Installing pyenv and Friends"
+    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+    echo ""
+
+    echo "Installing Python Configuration"
+    printf "\n# Source dotfiles Python Configuration\n$bootstrap" >> $BASHRC
+    $bootstrap
+    echo ""
+
+    echo "Installing Python Environment"
+    pyenv install $PY_VERSION
+    pyenv global $PY_VERSION
+    pip install -r $SRC_DIR/requirements.txt
+fi
