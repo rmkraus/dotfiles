@@ -2,3 +2,7 @@
 custom_paths=$HOME/bin
 
 export PATH=$custom_paths:$PATH
+
+
+# set the default editor
+$EDITOR="vi"
