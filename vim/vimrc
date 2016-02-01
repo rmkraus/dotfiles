@@ -69,6 +69,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Enable soft-wrapping for text files
+  autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
+
 " load bundles
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/vim-airline
@@ -104,3 +107,15 @@ map <C-K> <C-W>k<C-W>_
 nmap <c-h> <c-w>h<c-w><Bar>
 nmap <c-l> <c-w>l<c-w><Bar>
 
+" Open URL
+command -bar -nargs=1 OpenURL :!open <args>
+function! OpenURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo s:uri
+  if s:uri != ""
+      exec "!open \"" . s:uri . "\""
+  else
+      echo "No URI found in line."
+  endif
+endfunction
+map <Leader>w :call OpenURL()<CR>
