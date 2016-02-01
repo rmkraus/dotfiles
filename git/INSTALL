@@ -1,0 +1,15 @@
+# Install Git Configuration
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+
+# Install Git Config
+if [ -f $HOME/.gitconfig ]; then
+    echo 'Moving ~/.gitconfig to ~/.gitconfig.bkp'
+    mv ~/.gitconfig ~/.gitconfig.bkp
+fi
+
+echo ''
+
+echo 'Installing Git Configuration'
+ln -s $SRC_DIR/gitconfig ~/.gitconfig
