@@ -13,3 +13,11 @@ function abspath() {
 
     echo $(cd $dir; pwd)$file
 }
+
+function cds() {
+    cd $HOME/src
+
+    if [ $# -gt 0 ]; then
+        cd $@
+    fi
+}
