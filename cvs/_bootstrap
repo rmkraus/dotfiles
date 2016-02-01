@@ -1,0 +1,4 @@
+# bootstraps CVS setup
+export PATH="/Users/rkraus/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
