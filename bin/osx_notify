@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# send a notification on OSX
+
+if [ $# -gt 0 ]; then
+    title=$1
+    shift
+    msg="$@"
+
+    osascript -e 'display notification "'"$msg"'" with title "'"$title"'"'
+
+else
+    echo "USAGE: osx_notify TITLE [MESSAGE]"
+fi
