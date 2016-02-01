@@ -1,0 +1,20 @@
+# Install Bash Configuration
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+if [ "$(uname)" == "Darwin" ]; then
+    OS="mac"
+    BASHRC="$HOME/.bash_profile"
+else
+    OS="linux"
+    BASHRC="$HOME/.bashrc"
+fi
+
+# Install Bash Config
+bootstrap="source $SRC_DIR/_bootstrap"
+already_installed=$(grep -c "$bootstrap" "$BASHRC")
+
+if [ $already_installed -eq 0 ]; then
+    echo "Installing Bash Commands"
+    printf "\n# Source dotfiles repo\n$bootstrap" >> $BASHRC
+fi

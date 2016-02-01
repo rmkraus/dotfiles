@@ -1,0 +1,4 @@
+# custom PATH directories
+custom_paths=$HOME/bin
+
+export PATH=$custom_paths:$PATH

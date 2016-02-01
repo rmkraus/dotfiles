@@ -1,0 +1,12 @@
+# loads all of the files in this directory
+src_dir_orig="$src_dir"
+src_dir=$(dirname "${BASH_SOURCE[0]}")
+
+source "$src_dir/aliases"
+source "$src_dir/functions"
+source "$src_dir/path"
+source "$src_dir/powerline.sh"
+
+unset src_dir
+src_dir="$src_dir_orig"
+unset src_dir_orig

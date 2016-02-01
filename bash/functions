@@ -1,0 +1,15 @@
+# Custom bash helper functions
+function abspath() {
+    if [ -f $1 ]; then
+        dir=$(dirname $1)
+        file=${1/$dir/}
+    elif [ -d $1 ]; then
+        dir=$1
+        file=""
+    else
+        echo "USAGE: abspath PATH" >&2
+        return 1
+    fi
+
+    echo $(cd $dir; pwd)$file
+}
