@@ -1,0 +1,106 @@
+" automatic loading of vimrc
+autocmd! bufwritepost .vimrc source %
+
+" better copy and past
+set clipboard=unnamed
+map <leader>c :w !pbcopy<CR><CR>
+map <leader>v :r !pbpaste<CR>
+map <leader>= :set number<CR>:set nopaste<CR>
+map <leader>- :set nonumber<CR>:set paste<CR>
+
+" Easy explorer open
+map <leader>e :E<CR>
+map <leader>r :bd<CR>
+map <leader>t :Tex<CR>
+
+" mouse and backspace
+set mouse=r
+set bs=2
+
+" clear search highlight
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+
+" easy tab swith
+map <leader>] <esc>:tabnext<CR>
+map <leader>[ <esc>:tabprevious<CR>
+
+" sort key
+map <leader>s :sort<CR>
+
+" indent / deindent
+vnoremap > >gv
+vnoremap < <gv
+
+" color scheme
+set t_Co=256
+color wombat256mod
+
+" remove extra whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+" syntax highlighting
+filetype plugin indent on
+syntax on
+
+" show line number and lengths
+set number " show line number
+set tw=79  " width of document
+set nowrap " don't automatically wrap on load
+set fo-=t  " don't automatically wrap while typing
+set colorcolumn=79
+highlight ColorColumn ctermbg=233
+
+" paragraph formatting
+vmap Q gq
+nmap Q gqap
+
+" use spaces, not tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+" make search case-insensitive
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" load bundles
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/vim-airline
+set runtimepath^=~/.vim/bundle/syntastic
+
+" ctrl-p
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*/__pycache__/*
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+
+" vim-airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dark'
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" python ide
+map <leader>b iimport pdb; pdb.set_trace() # BREAKPOINT<CR><C-c>
+
+" Window switch Ctrl+hjkl "
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+nmap <c-h> <c-w>h<c-w><Bar>
+nmap <c-l> <c-w>l<c-w><Bar>
+

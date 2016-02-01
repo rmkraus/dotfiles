@@ -1,0 +1,26 @@
+# Install Vim Configuration
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+
+# Install Vim Config
+if [ -f $HOME/.vimrc ]; then
+    echo 'Moving ~/.vimrc to ~/.vimrc.bkp'
+    mv ~/.vimrc ~/.vimrc.bkp
+fi
+
+if [ -d $HOME/.vim ]; then
+    echo 'Moving ~/.vim to ~/.vim.bkp'
+    mv ~/.vim ~/.vim.bkp
+fi
+
+echo ''
+
+echo 'Installing Fonts'
+$SRC_DIR/fonts/install.sh
+
+echo ''
+
+echo 'Installing Vim Configuration'
+ln -s $SRC_DIR/vimrc ~/.vimrc
+ln -s $SRC_DIR/vim ~/.vim
