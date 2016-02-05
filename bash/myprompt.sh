@@ -43,7 +43,7 @@ case "$(uname)" in
         readonly _PS_SYMBOL=''
         ;;
     Linux)
-        readonly _PS_SYMBOL='$'
+        readonly _PS_SYMBOL='§'
         ;;
     *)
         readonly _PS_SYMBOL='%'
