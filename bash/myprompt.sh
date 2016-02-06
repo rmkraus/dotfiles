@@ -64,8 +64,10 @@ function ps1() {
     # last exit bg color
     if [ $? -eq 0 ]; then
         local BG_EXIT="$_BG_GREEN"
+        local FG_EXIT="$_FG_GREEN"
     else
         local BG_EXIT="$_BG_RED"
+        local FG_EXIT="$_FG_RED"
     fi
 
     # print time if we can
@@ -76,7 +78,8 @@ function ps1() {
     # set PS1
     PS1="${_FG_BLACK}${_BG_GRAY_LT} $(hostname -s) "
     PS1+="${_FG_GRAY_LT}${_BG_CYAN}${_FG_WHITE} \w "
-    PS1+="${_FG_CYAN}${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL ${_NO_COLOR} "
+    PS1+="${_FG_CYAN}${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
+    PS1+="${_NO_COLOR}${_FG_EXIT}${_NO_COLOR} "
 }
 
 
