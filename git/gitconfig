@@ -5,3 +5,5 @@
 [user]
 	name = Ryan Kraus
 	email = rmkraus@gmail.com
+[push]
+	default = simple
