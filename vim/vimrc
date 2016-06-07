@@ -44,6 +44,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 filetype plugin indent on
 syntax on
 
+" Don't change the background, it bugs me
+hi Normal ctermbg=none
+
 " show line number and lengths
 set number " show line number
 set tw=79  " width of document
@@ -119,3 +122,5 @@ function! OpenURL()
   endif
 endfunction
 map <Leader>w :call OpenURL()<CR>
+
+
