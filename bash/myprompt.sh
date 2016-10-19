@@ -77,9 +77,9 @@ function ps1() {
 
     # set PS1
     PS1="${_FG_BLACK}${_BG_GRAY_LT} $(hostname -s) "
-    PS1+="${_FG_GRAY_LT}${_BG_CYAN}${_FG_WHITE} \w "
-    PS1+="${_FG_CYAN}${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
-    PS1+="${_NO_COLOR}${FG_EXIT}${_NO_COLOR} "
+    PS1+="${_BG_CYAN}${_FG_WHITE} \w "
+    PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
+    PS1+="${_NO_COLOR} "
 }
 
 
