@@ -1,0 +1,15 @@
+# Install tmux Configuration
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+
+# Install Vim Config
+if [ -f $HOME/.tmux.conf ]; then
+    echo 'Moving ~/.tmux.conf to ~/.tmux.conf.bkp'
+    mv ~/.tmux.conf ~/.tmux.conf.bkp
+fi
+
+echo ''
+
+echo 'Installing tmux Configuration'
+ln -s $SRC_DIR/tmux.conf ~/.tmux.conf
