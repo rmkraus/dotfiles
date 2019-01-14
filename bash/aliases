@@ -1,5 +1,5 @@
 # custom aliases
-alias ll="ls -lhG"
+alias ll="ls -lh"
 
 if [ $(command -v pbcopy | wc -l) -eq 0 ]; then
     alias pbcopy='xclip -selection clipboard'

@@ -46,6 +46,7 @@ syntax on
 
 " Don't change the background, it bugs me
 hi Normal ctermbg=none
+hi NonText ctermbg=none
 
 " show line number and lengths
 set number " show line number

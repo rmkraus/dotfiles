@@ -49,13 +49,13 @@ function ps1() {
     fi
 
     # print time if we can
-    if hash tput 2>/dev/null; then
-        printf "$(_time)"
-    fi
+    # if hash tput 2>/dev/null; then
+    #     printf "$(_time)"
+    # fi
 
     # set PS1
-    PS1="${_FG_BLACK}${_BG_GRAY_LT} $(hostname -s) "
-    PS1+="${_BG_CYAN}${_FG_WHITE} \w "
+    PS1="${_FG_BLACK}${_BG_GRAY_LT} \\u@$(hostname -s)"
+    PS1+="${_BG_CYAN}${_FG_WHITE}:\w "
     PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
     PS1+="${_NO_COLOR} "
 }
