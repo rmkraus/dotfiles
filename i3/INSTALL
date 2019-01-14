@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Constants
+SRC_DIR=$(cd $(dirname $0); pwd)
+
+# install packages
+sudo yum install -y i3 pystatus feh compton
+
+# put config in place
+mkdir -p ~/.config/i3
+mkdir -p ~/.config/i3status
+ln -s ${SRC_DIR}/i3_config ~/.config/i3/config
+ln -s ${SRC_DIR}/i3status_config ~/.config/i3status/config
