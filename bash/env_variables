@@ -5,4 +5,4 @@ export PATH=$custom_paths:$PATH
 
 
 # set the default editor
-EDITOR="vi"
+EDITOR="vim"
