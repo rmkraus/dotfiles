@@ -1,0 +1,27 @@
+#!/bin/bash
+
+url='https://www.xkcd.com'
+
+# get the latest comic url
+tag="src"
+src=$(curl -s $url | \
+        grep img | \
+        grep imgs.xkcd | \
+        head -n 1 | \
+        awk -F "${tag}=" '{ print $2 }' | \
+        awk -F '"' '{ print "https:" $2; }')
+
+# get the latest comic alt text
+tag="title"
+alt=$(curl -s $url | \
+        grep img | \
+        grep imgs.xkcd | \
+        head -n 1 | \
+        awk -F "${tag}=" '{ print $2 }' | \
+        awk -F '"' '{ print $2; }')
+
+# display the comic
+feh -F "$src" &> /dev/null
+
+# print alt text
+echo "$alt"

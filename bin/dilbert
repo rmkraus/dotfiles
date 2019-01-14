@@ -1,0 +1,25 @@
+#!/bin/bash
+
+url='https://dilbert.com'
+
+# get the latest comic url
+tag="src"
+src=$(curl -s $url | \
+        grep 'img-comic"' | \
+        awk -F "${tag}=" '{ print $2 }' | \
+        awk -F '"' '{ print "https:" $2; }' | \
+        head -n 1)
+
+# get the latest comic alt text
+tag="alt"
+alt=$(curl -s $url | \
+        grep 'img-comic"' | \
+        awk -F "${tag}=" '{ print $2 }' | \
+        awk -F '"' '{ print $2; }' | \
+        head -n 1)
+
+# display the comic
+feh -F "$src" &> /dev/null
+
+# print alt text
+echo "$alt"
