@@ -1,7 +1,0 @@
-#! /bin/bash
-
-# vi runs vim
-# ALWAYS returns exit code 0
-
-vim $@
-exit 0
