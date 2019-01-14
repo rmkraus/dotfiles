@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url='https://www.xkcd.com'
+url="https://www.xkcd.com/$1/"
 
 # get the latest comic url
 tag="src"
