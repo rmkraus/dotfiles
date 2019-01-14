@@ -1,7 +1,5 @@
 # Install Python Configuration
 
-PY_VERSION="3.5.1"
-
 # Constants
 SRC_DIR=$(cd $(dirname $0); pwd)
 if [ "$(uname)" == "Darwin" ]; then
@@ -25,9 +23,4 @@ if [ $already_installed -eq 0 ]; then
     printf "\n# Source dotfiles Python Configuration\n$bootstrap" >> $BASHRC
     $bootstrap
     echo ""
-
-    echo "Installing Python Environment"
-    pyenv install $PY_VERSION
-    pyenv global $PY_VERSION
-    pip install -r $SRC_DIR/requirements.txt
 fi
