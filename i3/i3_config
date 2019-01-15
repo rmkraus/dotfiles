@@ -180,7 +180,7 @@ exec --no-startup-id feh --bg-scale -Z /usr/share/backgrounds/f29/default/tv-wid
 # set default border
 new_window pixel 5
 # start the compositer
-exec --no-startup-id compton
+# exec --no-startup-id compton
 
 # colors
 set $tp #00000000
