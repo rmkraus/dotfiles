@@ -3,7 +3,7 @@
 
 vertical=$(xrandr | grep '*' | awk -Fx '{ print $2; }' | awk '{ print $1; }')
 if [ $vertical -gt 1800 ]; then
-    args="--force-device-scale-factor=1.5"
+    args="--force-device-scale-factor=2"
 else
     args=""
 fi
