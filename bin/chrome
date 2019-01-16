@@ -1,8 +1,16 @@
 #!/bin/bash
 
+
+vertical=$(xrandr | grep '*' | awk -Fx '{ print $2; }' | awk '{ print $1; }')
+if [ $vertical -gt 1800 ]; then
+    args="--force-device-scale-factor=1.5"
+else
+    args=""
+fi
+
 which chromium-browser &> /dev/null
 if [ $? -eq "0" ]; then
-    chromium-browser $@
+    chromium-browser $args $@
 else
     echo 'Chromium is not installed.'
 fi
