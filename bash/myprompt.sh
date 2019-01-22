@@ -53,8 +53,16 @@ function ps1() {
     #     printf "$(_time)"
     # fi
 
+    # get the python virtualenv
+    if [ "$VIRTUAL_ENV" != "" ]; then
+        venv=$(basename "$VIRTUAL_ENV")
+        PS1="[$venv] "
+    else
+        PS1=""
+    fi
+
     # set PS1
-    PS1="${_FG_BLACK}${_BG_GRAY_LT} \\u@$(hostname -s)"
+    PS1+="${_FG_BLACK}${_BG_GRAY_LT} \\u@$(hostname -s)"
     PS1+="${_BG_CYAN}${_FG_WHITE}:\w "
     PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
     PS1+="${_NO_COLOR} "
