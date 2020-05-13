@@ -11,6 +11,7 @@ readonly _BG_CYAN="\[\033[46m\]"
 readonly _BG_GRAY_LT="\[\033[47m\]"
 readonly _BG_GREEN="\[\033[42m\]"
 readonly _BG_RED="\[\033[41m\]"
+readonly _BG_YELLOW="\[\033[103m\]"
 # define color reset
 readonly _NO_COLOR="\[\033[0m\]"
 
@@ -28,6 +29,29 @@ case "$(uname)" in
 esac
 
 
+# python virtual env function
+function _find_venv() {
+loop=1
+start=$(pwd)
+
+while [ $loop == 1 ]; do
+    if [ -e */bin/activate ]; then
+        loop=0
+        file=$(ls */bin/activate | head -n1)
+        found="$(pwd)/${file}"
+    elif [ "$(pwd)" == "/" ]; then
+        loop=0
+        found=""
+    else
+        cd ..
+    fi
+done
+
+echo $found
+cd "$start"
+}
+
+
 # time function
 function _time() {
     tput sc
@@ -38,7 +62,7 @@ function _time() {
 
 
 # PS1 Calc function
-function ps1() {
+function ps1_real() {
     # last exit bg color
     if [ $? -eq 0 ]; then
         local BG_EXIT="$_BG_GREEN"
@@ -56,18 +80,61 @@ function ps1() {
     # get the python virtualenv
     if [ "$VIRTUAL_ENV" != "" ]; then
         venv=$(basename "$VIRTUAL_ENV")
-        PS1="[$venv] "
+        PS1="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
     else
         PS1=""
     fi
 
-    # set PS1
+    # set PS1 - part 1
     PS1+="${_FG_BLACK}${_BG_GRAY_LT} \\u@$(hostname -s)"
     PS1+="${_BG_CYAN}${_FG_WHITE}:\w "
+    PS1+="${_NO_COLOR}"
+
+    # decide b/w single or multi line
+    _pwd=`pwd`
+    if [ ${#_pwd} -gt 30 ]; then
+        # two lines
+        PS1="\n$PS1\n"
+    fi
+
+    # set PS1 - part 2
     PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
     PS1+="${_NO_COLOR} "
+
+    # load venv
+    if [ ! -e "${VIRTUAL_ENV}" ]; then
+        source $(_find_venv) &> /dev/null
+    fi
 }
 
+function ps1_joke() {
+    # last exit bg color
+    if [ $? -eq 0 ]; then
+        local BG_EXIT="$_BG_GREEN"
+        local FG_EXIT="$_FG_GREEN"
+    else
+        local BG_EXIT="$_BG_RED"
+        local FG_EXIT="$_FG_RED"
+    fi
+
+    # set PS1 - part 1
+    PS1=""
+    PS1+="${_FG_BLACK}${_BG_GRAY_LT} whoami@hostname"
+    PS1+="${_BG_CYAN}${_FG_WHITE}:pwd "
+    PS1+="${_NO_COLOR}"
+    PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
+    PS1+="${_NO_COLOR} "
+
+    # load venv
+    if [ ! -e "${VIRTUAL_ENV}" ]; then
+        source $(_find_venv) &> /dev/null
+    fi
+
+}
 
 # Run function for each prompt
-PROMPT_COMMAND=ps1
+if [ `date +%m%d` == "0401" ]; then
+    PROMPT_COMMAND=ps1_joke
+else
+    PROMPT_COMMAND=ps1_real
+fi

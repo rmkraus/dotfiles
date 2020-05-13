@@ -14,7 +14,7 @@ map <leader>r :bd<CR>
 map <leader>t :Tex<CR>
 
 " mouse and backspace
-set mouse=r
+" set mouse=r
 set bs=2
 
 " clear search highlight
