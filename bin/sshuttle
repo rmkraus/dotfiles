@@ -3,7 +3,9 @@
 # wrapper for sshuttle to look for profiles
 
 PROFILES=~/.config/sshuttle
-SSHUTTLE="/usr/local/bin/sshuttle"
+
+# find that native sshuttle
+SSHUTTLE=`which -a sshuttle | grep -v $0 | head -n 1`
 
 # launch the profile if found
 if [ -e ${PROFILES}/$1 ]; then
