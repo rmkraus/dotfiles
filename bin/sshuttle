@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# wrapper for sshuttle to look for profiles
+
+PROFILES=~/.config/sshuttle
+SSHUTTLE="/usr/local/bin/sshuttle"
+
+# launch the profile if found
+if [ -e ${PROFILES}/$1 ]; then
+    name=$1
+    shift
+    echo "Profile found: ${name}"
+    echo "${SSHUTTLE} @${PROFILES}/${name} $@"
+    echo " "
+    ${SSHUTTLE} @${PROFILES}/${name} $@
+    exit $?
+fi
+
+# run sshuttle natively
+${SSHUTTLE} $@
