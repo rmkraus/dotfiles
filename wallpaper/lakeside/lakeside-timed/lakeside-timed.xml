@@ -1,0 +1,144 @@
+<background>
+  <starttime>
+    <year>2011</year>
+    <month>11</month>
+    <day>24</day>
+    <hour>4</hour>
+    <minute>00</minute>
+    <second>00</second>
+  </starttime>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_01.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_01.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_02.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_02.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_02.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_03.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_03.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_03.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_04.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_04.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_04.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_05.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_05.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_05.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_06.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_06.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_06.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_07.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_07.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_07.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_08.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_08.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_08.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_09.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_09.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_09.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_10.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_10.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_10.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_11.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_11.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_11.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_12.png</to>
+</transition>
+
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_12.png</file>
+</static>
+
+<transition type="overlay">
+<duration>3600.0</duration>
+<from>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_12.png</from>
+<to>/usr/share/backgrounds/gnome/lakeside-timed/lakeside_1.png</to>
+</transition>
+
+</background>
+
