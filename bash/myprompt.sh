@@ -6,12 +6,15 @@ readonly _FG_GRAY_LT="\[\033[37m\]"
 readonly _FG_GREEN="\[\033[32m\]"
 readonly _FG_RED="\[\033[31m\]"
 readonly _FG_WHITE="\[\033[37m\]"
+readonly _FG_PURPLE="\[\033[35m\]"
 # Define background colors
+readonly _BG_BLACK="\[\033[40m\]"
 readonly _BG_CYAN="\[\033[46m\]"
 readonly _BG_GRAY_LT="\[\033[47m\]"
 readonly _BG_GREEN="\[\033[42m\]"
 readonly _BG_RED="\[\033[41m\]"
 readonly _BG_YELLOW="\[\033[103m\]"
+readonly _BG_PURPLE="\[\033[45m\]"
 # define color reset
 readonly _NO_COLOR="\[\033[0m\]"
 
@@ -77,13 +80,25 @@ function ps1_real() {
     #     printf "$(_time)"
     # fi
 
+    PS1=""
+
     # get the python virtualenv
     if [ "$VIRTUAL_ENV" != "" ]; then
         venv=$(basename "$VIRTUAL_ENV")
-        PS1="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
+        PS1_VENV="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
     else
-        PS1=""
+        PS1_VENV=""
     fi
+    PS1+=$PS1_VENV
+
+    # get toolbox
+    if [ -f "$TOOLBOX_PATH" ]; then
+        PS1_TBX="${_BG_BLACK}${_FG_PURPLE}⬢ "
+    else
+        PS1_TBX=""
+    fi
+    PS1+=$PS1_TBX
+
 
     # set PS1 - part 1
     PS1+="${_FG_BLACK}${_BG_GRAY_LT} \\u@$(hostname -s)"
