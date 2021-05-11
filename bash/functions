@@ -15,11 +15,20 @@ function abspath() {
 }
 
 function cds() {
+    start=$(pwd)
     cd $HOME/src
 
-    if [ $# -gt 0 ]; then
-        cd $@
-    fi
+    while (( "$#" )); do
+        cd *$1*
+
+        if [ $? != 0 ]; then
+            echo "$(pwd)/*$1* Not Found"
+            cd "$start"
+            return 1
+        fi
+
+        shift
+    done
 }
 
 # credit: http://nparikh.org/notes/zshrc.txt
