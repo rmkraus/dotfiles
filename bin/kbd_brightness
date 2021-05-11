@@ -1,0 +1,1 @@
+sudo sh -c 'yad  --on-top  --scale --min-value=0 --max-value=2 --step=1 --enforce-step --print-partial --value=$(cat /sys/class/leds/tpacpi\:\:kbd_backlight/brightness) | while read line; do echo "$line" > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness; sleep 0.01; done'
