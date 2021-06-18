@@ -1,1 +1,29 @@
-sudo sh -c 'yad  --on-top  --scale --min-value=0 --max-value=2 --step=1 --enforce-step --print-partial --value=$(cat /sys/class/leds/tpacpi\:\:kbd_backlight/brightness) | while read line; do echo "$line" > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness; sleep 0.01; done'
+
+if [ $# -eq 0 ]; then
+    # no arguments provided, show gui
+    sudo sh -c \
+        'yad  --on-top  --scale \
+              --min-value=0 --max-value=2 --step=1 --enforce-step \
+              --print-partial \
+              --value=$(cat /sys/class/leds/tpacpi\:\:kbd_backlight/brightness) | \
+         while read line; do echo "$line" > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness; sleep 0.01; done'
+
+else
+    # input was provided as either a delta or absvalue
+    absval=0
+    curval=$(cat /sys/class/leds/tpacpi\:\:kbd_backlight/brightness)
+    if [ "${1:0:1}" == "+" ]; then
+        absval=$(expr $curval + ${1:1})
+    elif [ "${1:0:1}" == "-" ]; then
+        absval=$(expr $curval - ${1:1})
+    else
+        absval=$1
+    fi
+
+    sudo sh -c "echo $absval > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness" 2> /dev/null
+
+    if [ $? -ne 0 ]; then
+        echo "Invalid input $1"
+        exit 1
+    fi
+fi
