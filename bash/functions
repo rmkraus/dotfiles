@@ -15,20 +15,57 @@ function abspath() {
 }
 
 function cds() {
-    start=$(pwd)
-    cd $HOME/src
+    _cds 0 $@
+}
+
+function _cds() {
+    local start=$(pwd)
+    local depth=$1
+    local sigint=0
+    shift
+
+    function _return() {
+        sigint=1
+        xdotool key Return
+    }
+    trap _return SIGINT
+
+    if ! pwd | grep "^`cd ~/src; pwd`" &>/dev/null; then
+        cd $HOME/src
+    fi
 
     while (( "$#" )); do
         cd *$1*
 
         if [ $? != 0 ]; then
             echo "$(pwd)/*$1* Not Found"
-            cd "$start"
-            return 1
+            echo ""
+            if [ $depth == 0 ]; then
+                cd "$start"
+                return 2
+            fi
         fi
 
         shift
     done
+
+    ls -la
+
+    echo -n 'cds # '
+    read nextdir
+
+    if [[ $sigint == 1 ]]; then
+        return 1
+    fi
+    if [[ $nextdir == "" ]]; then
+        return 0
+    fi
+    echo ""
+    if ! _cds `expr $depth + 1` $nextdir; then
+        cd $start
+        return 1
+    fi
+    trap - SIGINT
 }
 
 # credit: http://nparikh.org/notes/zshrc.txt
