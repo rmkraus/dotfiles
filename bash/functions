@@ -30,6 +30,8 @@ function _cds() {
     }
     trap _return SIGINT
 
+    tput clear
+
     if ! pwd | grep "^`cd ~/src; pwd`" &>/dev/null; then
         cd $HOME/src
     fi
@@ -45,6 +47,10 @@ function _cds() {
             done
         elif [[ "$1" == "+" ]]; then
             return 0
+        elif [[ "$1" == "$HOME" ]]; then
+            cd ~/src
+        elif [[ "$1" == "~" ]]; then
+            cd ~/src
         else
             if ! cd "$1" 2> /dev/null; then
                 cd *$1*
@@ -63,7 +69,11 @@ function _cds() {
         shift
     done
 
-    ls -la
+    tput sc
+    tput smso; for i in $(seq 1 `tput cols`); do echo -n ' '; done; tput sgr0
+    tput rc
+    tput smso; pwd; tput sgr0
+    ls -la --group-directories-first
 
     echo -n 'cds # '
     read nextdir
