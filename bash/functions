@@ -74,6 +74,7 @@ function _cds() {
     tput rc
     tput smso; pwd; tput sgr0
     if git status &> /dev/null; then
+        echo "git branch: " `git branch --show-current | xargs echo -n`
         echo "git status: " `git status -s | grep -c '^ M'` 'modified |' `git status -s | grep -c '^ D'` 'deleted |' `git status -s | grep -c '^??'` 'untracked |' `git status -s | grep -c '^A'` 'added'
     fi
     echo
