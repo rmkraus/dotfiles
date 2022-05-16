@@ -86,6 +86,8 @@ function ps1_real() {
     if [ "$VIRTUAL_ENV" != "" ]; then
         venv=$(basename "$VIRTUAL_ENV")
         PS1_VENV="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
+    elif [ "$CONDA_PROMPT_MODIFIER" != "" ]; then
+        PS1_VENV="${_BG_YELLOW}${_FG_CYAN} ${CONDA_PROMPT_MODIFIER}"
     else
         PS1_VENV=""
     fi
