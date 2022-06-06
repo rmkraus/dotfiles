@@ -1,6 +1,9 @@
 " automatic loading of vimrc
 autocmd! bufwritepost .vimrc source %
 
+" hidden character mapping
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+
 " better copy and past
 set clipboard=unnamed
 map <leader>c :w !pbcopy<CR><CR>
