@@ -42,6 +42,10 @@ while [ $loop == 1 ]; do
         loop=0
         file=$(ls */bin/activate | head -n1)
         found="$(pwd)/${file}"
+    elif [ -e .*/bin/activate ]; then
+        loop=0
+        file=$(ls .*/bin/activate | head -n1)
+        found="$(pwd)/${file}"
     elif [ "$(pwd)" == "/" ]; then
         loop=0
         found=""
@@ -80,11 +84,16 @@ function ps1_real() {
     #     printf "$(_time)"
     # fi
 
+    # load venv
+    if [ ! -e "${VIRTUAL_ENV}" ]; then
+        source $(_find_venv) &> /dev/null
+    fi
+
     PS1=""
 
     # get the python virtualenv
     if [ "$VIRTUAL_ENV" != "" ]; then
-        venv=$(basename "$VIRTUAL_ENV")
+        venv=$(basename $(dirname $VIRTUAL_ENV))/$(basename $VIRTUAL_ENV)
         PS1_VENV="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
     elif [ "$CONDA_PROMPT_MODIFIER" != "" ]; then
         PS1_VENV="${_BG_YELLOW}${_FG_CYAN} ${CONDA_PROMPT_MODIFIER}"
@@ -117,11 +126,6 @@ function ps1_real() {
     # set PS1 - part 2
     PS1+="${BG_EXIT}${_FG_WHITE} $_PS_SYMBOL "
     PS1+="${_NO_COLOR} "
-
-    # load venv
-    if [ ! -e "${VIRTUAL_ENV}" ]; then
-        source $(_find_venv) &> /dev/null
-    fi
 }
 
 function ps1_joke() {
