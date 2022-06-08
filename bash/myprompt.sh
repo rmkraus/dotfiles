@@ -85,6 +85,12 @@ function ps1_real() {
     # fi
 
     # load venv
+    if [ -e "${VIRTUAL_ENV}" ]; then
+        if [[ ! "$(pwd)" =~ "$(dirname ${VIRTUAL_ENV})".* ]]; then
+            echo "Leaving Python Virtual Environment."
+            deactivate
+        fi
+    fi
     if [ ! -e "${VIRTUAL_ENV}" ]; then
         source $(_find_venv) &> /dev/null
     fi
@@ -93,7 +99,7 @@ function ps1_real() {
 
     # get the python virtualenv
     if [ "$VIRTUAL_ENV" != "" ]; then
-        venv=$(basename $(dirname $VIRTUAL_ENV))/$(basename $VIRTUAL_ENV)
+        venv=$(echo $(basename $VIRTUAL_ENV) | grep -v '^\.' || echo $(basename $(dirname $VIRTUAL_ENV)))
         PS1_VENV="${_BG_YELLOW}${_FG_CYAN}[ ${venv} ]"
     elif [ "$CONDA_PROMPT_MODIFIER" != "" ]; then
         PS1_VENV="${_BG_YELLOW}${_FG_CYAN} ${CONDA_PROMPT_MODIFIER}"

@@ -53,10 +53,10 @@ hi NonText ctermbg=none
 
 " show line number and lengths
 set number " show line number
-set tw=79  " width of document
+set tw=119  " width of document
 set nowrap " don't automatically wrap on load
 set fo-=t  " don't automatically wrap while typing
-set colorcolumn=79
+set colorcolumn=119
 highlight ColorColumn ctermbg=233
 
 " paragraph formatting
